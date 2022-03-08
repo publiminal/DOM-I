@@ -40,3 +40,73 @@ const siteContent = { // DO NOT CHANGE THIS OBJECT
 };
 
 console.log('project wired!')
+
+/* define dom instances  */
+const _dm = document; // shorthand for document
+const _dt = siteContent; // shorthand for data
+// formated mainContent 
+const mainArr = Object.values(_dt["main-content"] ); // create arr from MainContent Obj
+
+// console.log("minArr" , mainArr );
+const mainContent = []
+for (let index = 0; index < mainArr.length; index++) {
+  mainContent.push({title:mainArr[index], titleValue:mainArr[index+1]});
+  index++
+}
+// debugger
+// console.log(`mainContent,`,mainContent );
+
+const me = {
+  nav:{dom:_dm.querySelectorAll("nav a "), data:_dt.nav},
+  logo:{dom:_dm.querySelector("header img"), data:_dt.images["logo-img"]},
+  cta:{dom:_dm.querySelector("h1"), data:_dt.cta.h1},
+  ctaBtn :{dom:_dm.querySelector("h1 ~ Button "), data:_dt.cta.button},
+  ctaImg :{dom:_dm.querySelector("section img"), data:_dt.images["cta-img"]},
+  mainContent:{dom:_dm.querySelectorAll(".main-content  h4"),data:mainContent},
+  midImage:{dom:_dm.querySelector("section ~ section img"), data:_dt.images["accent-img"]},
+  contact:{dom:_dm.querySelector(".contact"), data:_dt.contact},
+  footer:{dom:_dm.querySelector("footer a"), data:_dt.footer}
+  }
+ 
+
+// debugger
+
+/* update header  */
+/* update nav links  */
+me.nav.dom.forEach(( link, idx ) => {  
+  link.href = "#";
+  link.textContent = me.nav.data[`nav-item-${idx}`];
+});
+
+// update img logo
+me.logo.dom.src = me.logo.data 
+
+//update cta text
+me.cta.dom.textContent = me.cta.data
+
+// update cta Button
+me.ctaBtn.dom.textContent = me.ctaBtn.data;
+
+// update cta Image
+me.ctaImg.dom.src = me.ctaImg.data;
+
+//update mainContent
+// console.log(me.mainContent.dom )
+me.mainContent.dom.forEach(( h4, idx ) => {  
+  h4.textContent = me.mainContent.data[idx].title ; // udpate h4 
+  h4.nextElementSibling.textContent = me.mainContent.data[idx].titleValue ; // update h4 text below
+});
+
+//update midImage
+me.midImage.dom.src = me.midImage.data;
+
+//update contact
+me.contact.dom.children[0].textContent = me.contact.data["contact-h4"]   //h4
+me.contact.dom.children[1].textContent = me.contact.data.address   //address
+me.contact.dom.children[2].textContent = me.contact.data.phone   //phone
+me.contact.dom.children[3].textContent = me.contact.data.email   //phone
+
+//update footer
+me.footer.dom.textContent = me.footer.data.copyright;
+
+
