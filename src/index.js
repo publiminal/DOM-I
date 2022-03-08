@@ -76,6 +76,7 @@ const me = {
 me.nav.dom.forEach(( link, idx ) => {  
   link.href = "#";
   link.textContent = me.nav.data[`nav-item-${idx}`];
+  link.classList.add("italic");
 });
 
 // update img logo
@@ -108,5 +109,5 @@ me.contact.dom.children[3].textContent = me.contact.data.email   //phone
 
 //update footer
 me.footer.dom.textContent = me.footer.data.copyright;
-
+me.footer.dom.classList.add("bold");
 
