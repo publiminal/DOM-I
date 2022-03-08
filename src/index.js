@@ -74,8 +74,10 @@ const me = {
 /* update header  */
 /* update nav links  */
 me.nav.dom.forEach(( link, idx ) => {  
+  // debugger
+  // const test = me.nav.data[`nav-item-${idx}`];
   link.href = "#";
-  link.textContent = me.nav.data[`nav-item-${idx}`];
+  link.textContent = me.nav.data[`nav-item-${idx+1}`];
   link.classList.add("italic");
 });
 
