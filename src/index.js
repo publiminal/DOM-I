@@ -49,9 +49,9 @@ const mainArr = Object.values(_dt["main-content"] ); // create arr from MainCont
 
 // console.log("minArr" , mainArr );
 const mainContent = []
-for (let index = 0; index < mainArr.length; index++) {
+for (let index = 0; index < mainArr.length; ) {
   mainContent.push({title:mainArr[index], titleValue:mainArr[index+1]});
-  index++
+  index += 2
 }
 // debugger
 // console.log(`mainContent,`,mainContent );
